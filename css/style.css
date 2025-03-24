@@ -1,0 +1,179 @@
+/* Define the keyframes for the logo animation */
+@keyframes logoAnimation {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the logo */
+#logo {
+    width: 25px; /* Initial width */
+    opacity: 0; /* Initial opacity */
+    animation: logoAnimation 5s ease-in-out forwards; /* Animation properties */
+}
+
+
+/* Set the body font to Poppins (from Google Fonts) with serif as a fallback.
+   Apply a seamless concrete background image with a fallback background color. */
+   body {
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Style all header elements to use flexbox for centering and column alignment. */
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Style the navigation links container to use flexbox with column alignment. */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure links retain the same color even after being visited. */
+a:visited {
+    color: #0000EE; /* Default link color */
+}
+
+/* Style header elements that are direct children of the card class.
+   Apply a teal background, solid border, padding, and rounded top corners. */
+   .card > header {
+    background: #288088;
+    border: #45ADAD 2px solid;
+    padding: 20px 0px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* /* Style the card class to have an initial size of 450px using flex properties, ensure the cards maintain consistent width in a mobile view by setting flex-direction and ensure the entire card has rounded top corners for consistent styling. */
+.card {
+    flex-basis: 450px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Style the pricing class to use flexbox for centering cards both horizontally and vertically. */
+.pricing {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style images within the gallery class. */
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Style the gallery class to use flexbox for layout. */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* For screens wider than 900px */
+@media screen and (min-width: 900px) {
+    
+    /* Style the header to use flexbox for layout */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    /* Style the navigation links container to use flexbox */
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* Style the pricing class to use flexbox for layout */
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Style the card class to have a fixed width of 275px and allow flexible height */
+    .card {
+        flex-basis: 275px;
+        margin: 10px;
+        padding-top: 0;
+    }
+
+    /* Style the first header to remain at the top of the screen while scrolling */
+    body > header:first-of-type {
+        position: sticky;
+        width: 100%; /* Make it span the full width of the viewport */
+    }
+
+}
+
+/* Disable animation for users who prefer reduced motion */
+@media all and (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none; /* Disable animation */
+    }
+}
+
+
+/* Apply styles for print in portrait mode */
+@media print {
+
+    body {
+        font-family: Arial, Helvetica, sans-serif; /* Set font to Arial with Helvetica as fallback */
+        background-image: none; /* Remove background image */
+    }
+
+    /*Makes nav take full width*/
+    nav {
+        width: 100%;
+    }
+
+    /*Spreads links evenly and aligns links in a row*/
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /*Aligns pricing items to the bottom*/
+    .pricing {
+        align-items: flex-end;
+        flex-flow: row nowrap;
+    }
+    
+    /*Adjusts card width to 325px and adds a border*/
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Hides the gallery */
+    #gallery, .gallery {
+        display: none; /* Hide the gallery */
+    }
+
+    /*Adds a thumbs-up emoji to the second list item in pricing and sets 6px spacing on the left of the emoji*/
+    .pricing li:nth-child(2)::after {
+        /*Unicode for thumbs-up emoji*/
+        content: "\1F44D";
+        margin-left: 6px;
+    }
+
+}
+
